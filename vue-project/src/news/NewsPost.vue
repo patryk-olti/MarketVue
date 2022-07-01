@@ -56,10 +56,12 @@ export default{
     .content{
         font-size: 0.9rem;
         text-align: justify;
+        border-bottom: 1px solid rgb(190, 190, 190);
     }
 
     .buttonContainer{
         width: 100%;
+        margin-top: 1rem;
         text-align: end;
     }
 
@@ -68,6 +70,11 @@ export default{
         background-color: white;
         padding: 0.2rem 0.5rem;
         cursor: pointer;
+        transition: background-color 0.5s;
+    }
+
+    button:hover{
+        background-color: rgb(230, 230, 230);
     }
 
 
