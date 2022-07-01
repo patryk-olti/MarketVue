@@ -1,9 +1,16 @@
 <template>
-  <div> hello Vue </div>
+  <div> <News /> </div>
 
 </template>
 
 <script>
+import News from './Views/News.vue';
+
+export default{
+  components: {
+    News
+  }
+}
 
 </script>
 
