@@ -1,10 +1,14 @@
 <template>
-    <div> list </div>
+    <NewsList />
 </template>
 
 <script>
+import NewsList from '../news/NewsList.vue'
 
 export default{
-    name: 'News'
+    name: 'News',
+    components: {
+        NewsList
+    }
 }
 </script>
