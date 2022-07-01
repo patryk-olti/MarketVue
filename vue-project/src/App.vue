@@ -1,6 +1,5 @@
 <template>
   <div> <News /> </div>
-
 </template>
 
 <script>

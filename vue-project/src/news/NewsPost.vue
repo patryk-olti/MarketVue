@@ -1,18 +1,20 @@
 <template>
     <div class='container'>
         <div class='title'> {{ title }} </div>
-        <div> {{ rate }}</div>
+        <star-rating v-model:rating="rate" read-only star-size="30"></star-rating>
         <div class='content'> {{ text }} </div>
         <div class="buttonContainer"> <button>more</button> </div>
-        
     </div>
 </template>
 
 <script>
-import { toNumber } from '@vue/shared';
+    import StarRating from 'vue-star-rating';
 
 export default{
     name: 'NewsPost',
+    components: {
+        StarRating
+    },
     props: {
         title: {
             type: String,
@@ -20,7 +22,7 @@ export default{
             default: 'Empty Title'
         },
         rate: {
-            type: toNumber,
+            type: Number,
             required: true
         },
         text: {
