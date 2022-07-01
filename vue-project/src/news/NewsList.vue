@@ -2,7 +2,7 @@
     <div class='container'>
         <div class='title'> Breaking News! </div>
 
-        <div v-for="item in list" :key="item.id" class='tile'>
+        <div v-for="item in list" :key="item.id" >
             <NewsPost :title="item.title" :text="item.text" />
         </div>
     </div>
@@ -54,10 +54,4 @@
         margin-bottom: 1rem;
     }
 
-    .tile{
-        padding: 0.5rem;
-        border-bottom: 1px solid rgb(95, 95, 95);
-        box-shadow: 2px 2px 4px 0px rgb(86, 88, 102);
-        margin-bottom: 0.5rem;
-    }
 </style>
