@@ -1,6 +1,7 @@
 <template>
     <div class='container'>
         <div class='title'> {{ title }} </div>
+        <div> {{ rate }}</div>
         <div class='content'> {{ text }} </div>
         <div class="buttonContainer"> <button>more</button> </div>
         
@@ -8,6 +9,8 @@
 </template>
 
 <script>
+import { toNumber } from '@vue/shared';
+
 export default{
     name: 'NewsPost',
     props: {
@@ -15,6 +18,10 @@ export default{
             type: String,
             required: true,
             default: 'Empty Title'
+        },
+        rate: {
+            type: toNumber,
+            required: true
         },
         text: {
             type: String,
