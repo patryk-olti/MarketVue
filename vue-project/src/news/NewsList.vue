@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <NewsPost />
+    <div v-for="item in list" :key="item.id">
+        <NewsPost :title="item.title" :text="item.text" />
     </div>
 </template>
 
