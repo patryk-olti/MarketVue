@@ -1,14 +1,34 @@
 <template>
-  <div> hello Vue </div>
-
+  <body>
+    <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/news">News</router-link>
+    </div>
+    <router-view />
+  </body>
 </template>
 
 <script>
+
+export default{
+}
 
 </script>
 
 <style>
 @import './assets/base.css';
+
+#nav{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+}
 
 #app {
   max-width: 1280px;
