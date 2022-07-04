@@ -1,8 +1,8 @@
 <template>
   <body>
     <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/news">News</router-link>
+        <router-link to="/" class="link">Home</router-link>
+        <router-link to="/news" class="link" >News</router-link>
     </div>
     <router-view />
   </body>
@@ -21,8 +21,41 @@ export default{
 #nav{
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   z-index: 100;
+}
+
+.link{
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: green;
+  font-size: 1.4rem;
+  padding: 0 0.2rem;
+  margin: 0.2rem 0.5rem;
+
+  z-index: 3;
+  overflow: hidden;
+}
+
+.link::after{
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  transform: translateX(35%);
+
+  width: 35%;
+  height: 100%;
+  background-color: rgb(255, 66, 66);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.link:hover.link::after{
+  transform: translateX(0);
 }
 
 body{
@@ -30,62 +63,4 @@ body{
   height: 100vh;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
-}
-
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-}
 </style>
