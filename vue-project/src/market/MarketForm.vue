@@ -17,7 +17,7 @@
         </div>
 
         <div>
-            <button> submit </button>
+            <button @click="setState"> submit </button>
         </div>
         
     </div>
@@ -41,6 +41,10 @@ export default{
     methods: {
         setTrade(number){
             this.actualTrade = this.actualTrade + number;
+        },
+        setState(){
+            this.actualState = this.actualState + this.actualTrade;
+            this.actualTrade = 0;
         }
     }
 }
