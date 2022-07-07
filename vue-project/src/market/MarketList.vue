@@ -9,6 +9,8 @@
 
             </nav>
             <MarketForm :price="ethernum.course[ethernum.course.length-1]" :quant="ethernum.quantActual" />
+
+             <PointChart :arrayData="ethernum.course" />
         </div>
 
     </div>
@@ -17,11 +19,13 @@
 <script>
 
 import MarketForm from './MarketForm.vue';
+import PointChart from './PointChart.vue';
 
 export default{
     name: 'MarketList',
     components: {
-        MarketForm
+        MarketForm,
+        PointChart
     },
     data(){
         return{
@@ -78,12 +82,13 @@ export default{
 
         width: 100vw;
         min-height: 100vh;
-
-        border: 1px solid black;
     }
 
     .content{
-        border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
 </style>
