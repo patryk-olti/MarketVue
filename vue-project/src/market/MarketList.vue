@@ -5,14 +5,21 @@
             <nav> 
                 <div> <span> {{ ethernum.name }} : </span> <span> {{ ehtCourse }} </span> </div>
             </nav>
+            <MarketForm />
         </div>
 
     </div>
 </template>
 
 <script>
+
+import MarketForm from './MarketForm.vue';
+
 export default{
     name: 'MarketList',
+    components: {
+        MarketForm
+    },
     data(){
         return{
             ethernum: {
