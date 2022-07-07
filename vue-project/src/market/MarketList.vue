@@ -4,8 +4,11 @@
             <p> Market - Cup </p>
             <nav> 
                 <div> <span> {{ ethernum.name }} : </span> <span> {{ ehtCourse }} </span> </div>
+                <div> {{ ethernum.quantActual }}</div>
+                <div> {{ ethernum.happiness }}</div>
+
             </nav>
-            <MarketForm :price="ethernum.course[ethernum.course.length-1]"/>
+            <MarketForm :price="ethernum.course[ethernum.course.length-1]" :quant="ethernum.quantActual" />
         </div>
 
     </div>
@@ -25,21 +28,44 @@ export default{
             ethernum: {
                 name: 'etherium',
                 shortcut: 'ETH',
-                course: [52,46,33,35]
+                course: [],
+                quantActual: 10000,
+                quantMax: 20000,
+                minPrice: 10,
+                maxPrice: 150,
+                happiness: 5
             }
         }
     },
     computed: {
-
         ehtCourse(){
             setInterval( () => {
-                let newValue = Math.floor(Math.random() * 10 + 30);
-                this.ethernum.course.push(newValue);
-            }, 10000 )
+
+                // calculate how many currencies should be sold
+                let { happiness, minPrice, maxPrice } = this.ethernum;
+                if( happiness >= 5 ){
+                    let randomQuant = Math.floor(Math.random() * happiness ) + 2*Math.floor(happiness);
+                    this.ethernum.quantActual += randomQuant;
+                }else{
+                    let randomQuant = Math.floor(Math.random() * happiness ) - (2*Math.floor(happiness));
+                    this.ethernum.quantActual += randomQuant;
+                }
+
+                // calculate new price of curriency
+                let newPrice = (maxPrice / this.ethernum.quantMax) * this.ethernum.quantActual + minPrice;
+                newPrice *= 100;
+                newPrice = Math.floor(newPrice) / 100;
+                this.ethernum.course.push(newPrice);
+
+                // generate new happinness
+                this.ethernum.happiness = (this.ethernum.quantActual / this.ethernum.quantMax * 10) + (Math.random()*2-1);
+                
+            }, 5000 )
             return this.ethernum.course;
         }
 
-    }
+    },
+
 }
 </script>
 

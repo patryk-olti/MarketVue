@@ -2,10 +2,11 @@
     <div class='container--marketform'>
         <div>
             <span> actual trade: <span class='strong'> {{ actualTrade }} </span> </span>
-            <span> actual state: <span class='strong'> {{ actualState }} </span> </span>
+            <span> price of trade: <span class='strong'> {{ Math.abs(actualTrade * price) }} </span> </span>
         </div>
 
         <div>
+            <span> actual state: <span class='strong'> {{ actualState }} </span> </span>
             <span> value of wallet: <span class='strong'> {{walletValue}}$ </span> </span>
         </div>
         
@@ -17,9 +18,11 @@
         </div>
 
         <div>
-            <button @click="setState"> submit </button>
+            <button @click="setState()"> submit </button>
+        </div>
 
-            {{ price }}
+        <div>
+            <span> fiat wallet: <span class='strong'> {{actualWallet}}$ </span> </span>
         </div>
         
     </div>
@@ -32,7 +35,8 @@ export default{
     data(){
         return{
             actualTrade: 0,
-            actualState: 10
+            actualState: 0,
+            actualWallet: 200
         }
     },
     props:{
@@ -40,6 +44,11 @@ export default{
             type: Number,
             required: true,
             default: 10
+        },
+        quant: {
+            type: Number,
+            required: true,
+            default: 1
         }
     },
     computed: {
@@ -52,7 +61,20 @@ export default{
             this.actualTrade = this.actualTrade + number;
         },
         setState(){
-            this.actualState = this.actualState + this.actualTrade;
+            let actualPrice = this.actualTrade * this.price;
+
+            if( actualPrice <= this.actualWallet && this.actualTrade > 0 ){
+                this.actualState = this.actualState + this.actualTrade;
+                this.actualWallet = this.actualWallet - actualPrice;
+                this.quant += this.actualTrade;
+            }
+
+            if( actualPrice < 0 && Math.abs(this.actualTrade) <= this.actualState ){
+                this.actualState = this.actualState + this.actualTrade;
+                this.actualWallet = this.actualWallet - actualPrice;
+                this.quant += this.actualTrade;
+            }
+
             this.actualTrade = 0;
         }
     }
