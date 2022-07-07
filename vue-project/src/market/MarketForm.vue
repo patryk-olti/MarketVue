@@ -18,6 +18,8 @@
 
         <div>
             <button @click="setState"> submit </button>
+
+            {{ price }}
         </div>
         
     </div>
@@ -33,9 +35,16 @@ export default{
             actualState: 10
         }
     },
+    props:{
+        price: {
+            type: Number,
+            required: true,
+            default: 10
+        }
+    },
     computed: {
         walletValue(){
-            return this.actualState * 20;
+            return this.actualState * this.price;
         }
     },
     methods: {

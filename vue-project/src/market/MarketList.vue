@@ -5,7 +5,7 @@
             <nav> 
                 <div> <span> {{ ethernum.name }} : </span> <span> {{ ehtCourse }} </span> </div>
             </nav>
-            <MarketForm />
+            <MarketForm :price="ethernum.course[ethernum.course.length-1]"/>
         </div>
 
     </div>
@@ -25,7 +25,7 @@ export default{
             ethernum: {
                 name: 'etherium',
                 shortcut: 'ETH',
-                course: [12,16,13,15]
+                course: [52,46,33,35]
             }
         }
     },
@@ -33,7 +33,7 @@ export default{
 
         ehtCourse(){
             setInterval( () => {
-                let newValue = Math.floor(Math.random() * 10);
+                let newValue = Math.floor(Math.random() * 10 + 30);
                 this.ethernum.course.push(newValue);
             }, 10000 )
             return this.ethernum.course;
