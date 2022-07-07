@@ -1,30 +1,48 @@
 <template>
     <div class='container--marketform'>
         <div>
-            <span> actual trade: <span class='strong'> 10 </span> </span>
-            <span> actual state: <span class='strong'> 99 </span> </span>
+            <span> actual trade: <span class='strong'> {{ actualTrade }} </span> </span>
+            <span> actual state: <span class='strong'> {{ actualState }} </span> </span>
+        </div>
+
+        <div>
+            <span> value of wallet: <span class='strong'> {{walletValue}}$ </span> </span>
         </div>
         
         <div class='box'>
-            <button> -5 </button>
-            <button> -1 </button>
-            <button> +1 </button>
-            <button> +5 </button>
+            <button @click="setTrade(-5)"> -5 </button>
+            <button @click="setTrade(-1)"> -1 </button>
+            <button @click="setTrade(+1)"> +1 </button>
+            <button @click="setTrade(+5)"> +5 </button>
         </div>
 
         <div>
             <button> submit </button>
         </div>
         
-
-
     </div>
 </template>
 
 <script>
 
 export default{
-    name: 'MarketForm'
+    name: 'MarketForm',
+    data(){
+        return{
+            actualTrade: 0,
+            actualState: 10
+        }
+    },
+    computed: {
+        walletValue(){
+            return this.actualState * 20;
+        }
+    },
+    methods: {
+        setTrade(number){
+            this.actualTrade = this.actualTrade + number;
+        }
+    }
 }
 
 </script>
