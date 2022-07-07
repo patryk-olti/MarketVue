@@ -40,7 +40,8 @@ export default{
     computed: {
         ehtCourse(){
             setInterval( () => {
-
+                const maxIndex = 30;
+ 
                 // calculate how many currencies should be sold
                 let { happiness, minPrice, maxPrice } = this.ethernum;
                 if( happiness >= 5 ){
@@ -56,15 +57,15 @@ export default{
                 newPrice *= 100;
                 newPrice = Math.floor(newPrice) / 100;
                 this.ethernum.course.push(newPrice);
+                if(this.ethernum.course.length > maxIndex){ this.ethernum.course.splice(0,1); }; //max 30 numbers of array
 
                 // generate new happinness
                 this.ethernum.happiness = (this.ethernum.quantActual / this.ethernum.quantMax * 10) + (Math.random()*2-1);
-                
+
             }, 5000 )
             return this.ethernum.course;
         }
-
-    },
+    }
 
 }
 </script>
