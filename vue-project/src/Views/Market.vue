@@ -1,5 +1,7 @@
 <template>
-    <MarketList />
+    <div class='container__market'>
+        <MarketList />
+    </div>
 </template>
 
 <script>
@@ -12,3 +14,12 @@ export default{
     }
 }
 </script>
+
+<style scoped>
+    .container__market{
+        width: 100vw;
+        min-height: 100vh;
+        background-color: aliceblue;
+    }
+
+</style>

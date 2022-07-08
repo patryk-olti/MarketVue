@@ -1,5 +1,7 @@
 <template>
-    <NewsList />
+    <div class='container__news'>
+        <NewsList />  
+    </div>
 </template>
 
 <script>
@@ -12,3 +14,12 @@ export default{
     }
 }
 </script>
+
+<style scoped>
+    .container__news{
+        width: 100vw;
+        min-height: 100vh;
+        background-color: aliceblue;
+    }
+
+</style>
