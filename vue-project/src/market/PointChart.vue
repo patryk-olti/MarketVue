@@ -6,20 +6,32 @@
             :width='index' 
             :key='index'
         />
+        <SingleHorizontalLine :height='85'/>
+        <SingleHorizontalLine :height='86'/>
+        <SingleHorizontalLine :height='87'/>
     </div>
+    
 </template>
 
 <script>
-    import SinglePoint from './SinglePoint.vue'
+    import SinglePoint from './SinglePoint.vue';
+    import SingleHorizontalLine from './SingleHorizontalLine.vue';
 
 export default{
     name: 'PointChart',
     components: {
-        SinglePoint
+        SinglePoint,
+        SingleHorizontalLine
     },
     props: {
         arrayData: {
             type: Array
+        },
+        actualMax:{
+            type: Number
+        },
+        actualMin: {
+            type: Number
         }
     }
 }
@@ -32,8 +44,4 @@ export default{
         height: 200px;
         border: 1px solid black;
     }
-
-
-
-
 </style>

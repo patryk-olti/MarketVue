@@ -4,7 +4,11 @@
             <p> Market - Cup </p>
             <nav class="content"> 
                 <div class="box"> <span> {{ ethernum.name }} : </span> <span> {{ ehtCourse }} </span> </div>
-                <PointChart :arrayData="ethernum.course" />
+                <PointChart 
+                    :arrayData="ethernum.course" 
+                    :actualMax="ethernum.actualMax"
+                    :actualMin="ethernum.actualMin"
+                />
                 <div>actual curr on market: {{ ethernum.quantActual }}</div>
                 <div> happiness status: {{ Math.floor(ethernum.happiness*100)/100 }}</div>
             </nav>
@@ -36,7 +40,9 @@ export default{
                 quantMax: 20000,
                 minPrice: 10,
                 maxPrice: 150,
-                happiness: 5
+                happiness: 5,
+                actualMax: 10,
+                actualMin: 150
             }
         }
     },
@@ -61,6 +67,9 @@ export default{
                 newPrice = Math.floor(newPrice) / 100;
                 this.ethernum.course.push(newPrice);
                 if(this.ethernum.course.length > maxIndex){ this.ethernum.course.splice(0,1); }; //max 30 numbers of array
+
+                if(this.ethernum.actualMax < newPrice){ this.ethernum.actualMax = newPrice}
+                if(this.ethernum.actualMin > newPrice){ this.ethernum.actualMin = newPrice}
 
                 // generate new happinness
                 this.ethernum.happiness = (this.ethernum.quantActual / this.ethernum.quantMax * 10) + (Math.random()*2-1);
