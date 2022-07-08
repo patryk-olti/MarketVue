@@ -2,15 +2,14 @@
     <div class="container">
         <div class="content">
             <p> Market - Cup </p>
-            <nav> 
-                <div> <span> {{ ethernum.name }} : </span> <span> {{ ehtCourse }} </span> </div>
-                <div> {{ ethernum.quantActual }}</div>
-                <div> {{ ethernum.happiness }}</div>
-
+            <nav class="content"> 
+                <div class="box"> <span> {{ ethernum.name }} : </span> <span> {{ ehtCourse }} </span> </div>
+                <PointChart :arrayData="ethernum.course" />
+                <div>actual curr on market: {{ ethernum.quantActual }}</div>
+                <div> happiness status: {{ Math.floor(ethernum.happiness*100)/100 }}</div>
             </nav>
             <MarketForm :price="ethernum.course[ethernum.course.length-1]" :quant="ethernum.quantActual" />
 
-             <PointChart :arrayData="ethernum.course" />
         </div>
 
     </div>
@@ -89,6 +88,11 @@ export default{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .box{
+        width: 400px;
+        margin-bottom: 1rem;
     }
 
 </style>

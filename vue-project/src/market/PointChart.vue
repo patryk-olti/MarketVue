@@ -1,6 +1,11 @@
 <template>
     <div class="container__pointChart" >
-        <SinglePoint v-for="(item, index) in arrayData" :height='item' :width='index' :key='index' />
+        <SinglePoint 
+            v-for="(item, index) in arrayData" 
+            :height='item' 
+            :width='index' 
+            :key='index'
+        />
     </div>
 </template>
 

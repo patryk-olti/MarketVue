@@ -88,8 +88,6 @@ export default{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
-        border: 1px solid red;
     }
 
     .strong{

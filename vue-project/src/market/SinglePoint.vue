@@ -18,7 +18,7 @@
         computed: {
             position(){
                 return{
-                    "top": `${(this.height-85)*200}px`,
+                    "top": `${(88-this.height)*50}px`,
                     'left': `${this.width*10}px`
                 }
             }
